@@ -1,5 +1,6 @@
-import pathComment from "../../icons/comment.svg";
-import pathDescription from "../../icons/description.svg";
+import pathEdit from "../../icons/edit.svg";
+import pathDelete from "../../icons/delete.svg";
+import pathClip from "../../icons/clip.svg";
 
 export const Card = ({ card }) => {
   return (
@@ -7,21 +8,25 @@ export const Card = ({ card }) => {
       <div className="card-container">
         <div className="card-header">
           <p className="card-header_name">{card.name}</p>
-
-          <div className="card-header_btn">
-            <span className="card-header_btnElem"></span>
-            <span className="card-header_btnElem"></span>
-            <span className="card-header_btnElem"></span>
+          <div className="card-header__btns">
+            <button className="card-btn">
+              <img src={pathEdit} alt="" />
+            </button>
+            <button className="card-btn">
+              <img src={pathDelete} alt="" />
+            </button>
           </div>
         </div>
         <div className="card-main">
-          <div className="card-main_icons">
-            {card.description?.length > 0 ? (
-              <p>{card.description}</p>
-            ) : (
-              <p>Нет описания</p>
-            )}
+          <p className="card-main__desc">
+            {card.description?.length > 0 ? card.description : "Нет описания"}
+          </p>
+          <div className="card-main__files">
+            <img src={pathClip} alt="" className="files__img" />
+            <span className="files__count">2</span>
           </div>
+          <span className="card-main__deadline">Выполнить до 12/01/1999</span>
+          <span className="card-main__deadline">Выполнена 12/01/1999</span>
         </div>
       </div>
     </>
