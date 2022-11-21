@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
@@ -33,6 +34,7 @@ export const MainPage = () => {
           <Button value={"Добавить задачу"} flagPlus={true} />
         </div>
       </div>
+      <Outlet />
     </>
   );
 };
