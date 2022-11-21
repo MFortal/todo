@@ -1,22 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import classNames from "classnames";
-
 import pathImg from "../../icons/plus.svg";
-import styles from "./Button.module.css";
 
-export const Button = ({ value, flagPlus = false, boardId }) => {
-  const navigate = useNavigate();
-
-  const onClick = () =>
-    flagPlus
-      ? navigate("/TodoList/create", { state: { boardId: boardId } })
-      : null;
+export const Button = ({ value, flagPlus = false}) => {
 
   return (
     <>
       <button
-        className={classNames(styles.container)}
-        onClick={onClick}
+        className='btn-container'
         type="submit">
         {flagPlus && <img alt="" src={pathImg} />}
         {value}

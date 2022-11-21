@@ -1,6 +1,3 @@
-import classNames from "classnames";
-import styles from "./Input.module.css";
-
 export const Input = ({
   nameInput,
   nameText,
@@ -11,19 +8,19 @@ export const Input = ({
   ...props
 }) => {
   return (
-    <div className={classNames(styles.container)}>
+    <div className='input-container'>
       <input
         placeholder={placeholderInput}
         type="text"
         name={nameInput}
         value={valueInput}
         {...props}
-        className={classNames(styles.input)}
+        className='input'
       />
 
       <textarea
         placeholder={placeholderText}
-        className={classNames(styles.input, styles.textarea)}
+        className='input textarea'
         type="text"
         name={nameText}
         value={valueText}
