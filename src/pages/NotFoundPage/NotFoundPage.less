@@ -1,0 +1,31 @@
+.notfound-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  font-size: 2rem;
+  gap: 40px;
+}
+
+.notfound-container_back {
+  animation: color-change 2s infinite;
+}
+
+@keyframes color-change {
+  0% {
+    color: var(--color-commonFont);
+  }
+  50% {
+    color: var(--color-darkgrey);
+  }
+  100% {
+    color: var(--color-commonFont);
+  }
+}
+
+.notfound-container_back:hover {
+  color: inherit;
+  animation: none;
+}
