@@ -1,0 +1,82 @@
+@import "./less/variables.less";
+
+@font-face {
+  font-family: "PoorStory-Regular";
+  src: url("./fonts/poor-story/PoorStory-Regular.eot");
+  src: url("./fonts/poor-story/PoorStory-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("./fonts/poor-story/PoorStory-Regular.svg#PoorStory-Regular")
+      format("svg"),
+    url("./fonts/poor-story/PoorStory-Regular.ttf") format("truetype"),
+    url("./fonts/poor-story/PoorStory-Regular.woff") format("woff"),
+    url("./fonts/poor-story/PoorStory-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald-Light";
+  src: url("./fonts/oswald/Oswald-Light.eot");
+  src: url("./fonts/oswald/Oswald-Light.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/oswald/Oswald-Light.svg#Oswald-Light") format("svg"),
+    url("./fonts/oswald/Oswald-Light.ttf") format("truetype"),
+    url("./fonts/oswald/Oswald-Light.woff") format("woff"),
+    url("./fonts/oswald/Oswald-Light.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: "Oswald-Light", monospace;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05rem;
+  color: var(--color-commonFont);
+  background-color: var(--color-backgroundMain);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+p,
+h3 {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+body::-webkit-scrollbar {
+  width: 7px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px 10px var(--color-track);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px var(--color-thumb);
+  border-radius: 10px;
+}
+
+.feedback {
+  width: 100%;
+  max-width: 311px;
+  font-size: 1rem;
+  color: var(--color-feedback);
+  text-align: center;
+}
+
+a:active,
+a:hover,
+a {
+  text-decoration: none;
+  color: inherit;
+}

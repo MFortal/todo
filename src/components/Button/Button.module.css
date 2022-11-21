@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  padding: 14px 40px 13px 40px;
+  cursor: pointer;
+
+  background: var(--color-white);
+  border: none;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.container:hover {
+  background: var(--color-yellow);
+}
