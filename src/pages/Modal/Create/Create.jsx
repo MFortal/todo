@@ -2,8 +2,8 @@ import { Formik, Form } from "formik";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
-import Button from "../../components/Button/Button";
-import Input from "../../components/Input/Input";
+import Button from "../../../components/Button/Button";
+import Input from "../../../components/Input/Input";
 
 export const ModalCreate = () => {
   const navigate = useNavigate();
