@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import pathClose from "../../../icons/closeModal.svg";
+
 export const ModalEdit = () => {
   const navigate = useNavigate();
 
@@ -11,8 +13,9 @@ export const ModalEdit = () => {
             className="modal_close"
             onClick={() => {
               navigate("/Todo");
-            }}
-          />
+            }}>
+            <img src={pathClose} alt="" />
+          </button>
           <div className="modal_contentDelete">
             <h3 className="modal_headerText">Удалить тикет?</h3>
             <div className="modal_buttons">

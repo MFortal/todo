@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
 
+import pathClose from "../../../icons/closeModal.svg";
+
 export const ModalCreate = () => {
   const navigate = useNavigate();
 
@@ -31,8 +33,9 @@ export const ModalCreate = () => {
             className="modal_close"
             onClick={() => {
               navigate("/Todo");
-            }}
-          />
+            }}>
+            <img src={pathClose} alt="" />
+          </button>
           <h3 className="modal_header">Создать</h3>
           <Formik
             initialValues={{
