@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import dayjs from "dayjs";
+import { FLAG } from "../../js/common";
 
 import pathEdit from "../../icons/edit.svg";
 import pathDelete from "../../icons/delete.svg";
@@ -11,24 +12,25 @@ export const Card = ({ card }) => {
   const dateCompletion = dayjs(card.dateCompletion.seconds * 1000);
   const defaultDate = dayjs("2040-01-01");
 
-  console.log(dayjs("2040-01-01").unix());
-
   const formatDate = (date) => date.format("DD/MM/YY");
 
   let classContainerCard = "card-container ";
+  let flag = FLAG.DEFAULT;
   // просрочена задача
   if (deadline.isBefore(currentDate) && dateCompletion.isSame(defaultDate)) {
     classContainerCard += "expired";
+    flag = FLAG.EXPIRED;
   }
 
   // задача выполнена
   if (!dateCompletion.isSame(defaultDate)) {
     classContainerCard += "complited";
+    flag = FLAG.COMPLETED;
   }
 
   return (
     <>
-      <NavLink to={`/Todo/view/${card.id}`} id="1">
+      <NavLink to={`/Todo/view/${card.id}`} state={{ card, flag }} id="1">
         <div className={classContainerCard}>
           <div className="card-header">
             <p className="card-header_name">{card.name}</p>
@@ -57,9 +59,9 @@ export const Card = ({ card }) => {
               Выполнить до {formatDate(deadline)}
             </span>
             <span className="card-main__deadline">
-              {dateCompletion.isSame(defaultDate)
-                ? "На выполнении"
-                : `Выполнена ${formatDate(dateCompletion)}`}
+              {flag === FLAG.COMPLETED
+                ? `Выполнена ${formatDate(dateCompletion)}`
+                : ""}
             </span>
           </div>
         </div>
