@@ -1,27 +1,28 @@
-import React from "react";
+import { query, collection, onSnapshot } from "firebase/firestore";
+import { React, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+
+import { db } from "../../firebase";
 
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
 
 export const MainPage = () => {
-  const cards = [
-    {
-      id: 1,
-      name: "Название 1",
-      description: "Описание 1",
-    },
-    {
-      id: 2,
-      name: "Название 2",
-      description: "Описание 2",
-    },
-    {
-      id: 3,
-      name: "Название 3",
-      description: "Описание 3",
-    },
-  ];
+  const [cards, setCards] = useState([]);
+
+  // Чтение данных из firebase
+  useEffect(() => {
+    const q = query(collection(db, "todos"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let cards = [];
+      querySnapshot.forEach((doc) => {
+        cards.push({ ...doc.data(), id: doc.id });
+      });
+      setCards(cards);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
       <div className="container">
