@@ -1,9 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import { deleteDoc, doc } from "firebase/firestore";
+import { useNavigate, useParams } from "react-router-dom";
+import { db } from "../../../firebase";
 
 import pathClose from "../../../icons/closeModal.svg";
 
-export const ModalEdit = () => {
+export const ModalDelete = () => {
   const navigate = useNavigate();
+  const { cardId } = useParams();
+
+  const deleteTodo = async (id) => {
+    await deleteDoc(doc(db, "todos", id));
+  };
 
   return (
     <>
@@ -19,7 +26,14 @@ export const ModalEdit = () => {
           <div className="modal_contentDelete">
             <h3 className="modal_headerText">Удалить задачу?</h3>
             <div className="modal_buttons">
-              <button className="modal_btn">Да</button>
+              <button
+                className="modal_btn"
+                onClick={() => {
+                  deleteTodo(cardId);
+                  navigate("/Todo");
+                }}>
+                Да
+              </button>
               <button
                 className="modal_btn"
                 onClick={() => {
@@ -35,4 +49,4 @@ export const ModalEdit = () => {
   );
 };
 
-export default ModalEdit;
+export default ModalDelete;

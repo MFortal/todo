@@ -4,7 +4,7 @@ import Button from "../../../components/Button/Button";
 
 import pathClose from "../../../icons/closeModal.svg";
 
-export const ModalEdit = () => {
+export const ModalView = () => {
   const navigate = useNavigate();
 
   return (
@@ -26,4 +26,4 @@ export const ModalEdit = () => {
   );
 };
 
-export default ModalEdit;
+export default ModalView;
