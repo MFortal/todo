@@ -17,7 +17,7 @@ export const ModalEdit = () => {
             <img src={pathClose} alt="" />
           </button>
           <div className="modal_contentDelete">
-            <h3 className="modal_headerText">Удалить тикет?</h3>
+            <h3 className="modal_headerText">Удалить задачу?</h3>
             <div className="modal_buttons">
               <button className="modal_btn">Да</button>
               <button

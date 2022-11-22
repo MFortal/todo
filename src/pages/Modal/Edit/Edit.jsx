@@ -17,9 +17,6 @@ export const ModalEdit = () => {
     if (values.name?.length < 5) {
       errors.name = "Наименование задачки должно быть больше 5 символов";
     }
-    if (!values.tags?.length) {
-      errors.tags = "Выберите хотя бы 1 тег";
-    }
 
     return errors;
   };

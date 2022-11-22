@@ -18,9 +18,6 @@ export const ModalCreate = () => {
     if (values.name?.length < 5) {
       errors.name = "Наименование задачки должно быть больше 5 символов";
     }
-    if (!values.tags?.length) {
-      errors.tags = "Выберите хотя бы 1 тег";
-    }
 
     return errors;
   };
@@ -61,9 +58,6 @@ export const ModalCreate = () => {
                 )}
                 {props.errors.name && (
                   <div className="feedback">{props.errors.name}</div>
-                )}
-                {props.errors.tags && (
-                  <div className="feedback">{props.errors.tags}</div>
                 )}
                 <Button value={"Сохранить"} />
               </Form>

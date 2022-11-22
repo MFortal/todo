@@ -4,7 +4,8 @@ import pathImg from "../../icons/plus.svg";
 export const Button = ({ value, flagPlus = false }) => {
   const navigate = useNavigate();
 
-  const onClick = () => (flagPlus ? navigate("/Todo/create") : null);
+  const onClick = () =>
+    flagPlus ? navigate("/Todo/create") : navigate("/Todo");
 
   return (
     <>
