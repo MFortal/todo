@@ -1,6 +1,6 @@
 import { query, collection, onSnapshot } from "firebase/firestore";
 import { React, useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import { db } from "../../firebase";
 
@@ -9,6 +9,7 @@ import Card from "../../components/Card/Card";
 
 export const MainPage = () => {
   const [cards, setCards] = useState([]);
+  const navigate = useNavigate();
 
   // Чтение данных из firebase
   useEffect(() => {
@@ -32,7 +33,11 @@ export const MainPage = () => {
               return <Card card={card} key={card.id} />;
             })}
           </div>
-          <Button value={"Добавить задачу"} flagPlus={true} />
+          <Button
+            value={"Добавить задачу"}
+            flagPlus={true}
+            onClick={() => navigate("/Todo/create")}
+          />
         </div>
       </div>
       <Outlet />

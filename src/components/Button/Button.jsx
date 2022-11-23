@@ -1,12 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import pathImg from "../../icons/plus.svg";
 
-export const Button = ({ value, flagPlus = false }) => {
-  const navigate = useNavigate();
-
-  const onClick = () =>
-    flagPlus ? navigate("/Todo/create") : navigate("/Todo");
-
+export const Button = ({ value, flagPlus = false, onClick }) => {
   return (
     <>
       <button className="btn-container" type="submit" onClick={onClick}>

@@ -1,6 +1,10 @@
 import { Formik, Form } from "formik";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
+
+import { doc, setDoc, Timestamp } from "firebase/firestore";
+import { db } from "../../../firebase";
 
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
@@ -10,16 +14,11 @@ import pathClose from "../../../icons/closeModal.svg";
 export const ModalCreate = () => {
   const navigate = useNavigate();
 
-  const validate = (values) => {
-    const errors = {};
-    if (values.description?.length > 0 && values.description?.length < 10) {
-      errors.description = "Описание задачки должно быть больше 10 символов";
-    }
-    if (values.name?.length < 5) {
-      errors.name = "Наименование задачки должно быть больше 5 символов";
-    }
+  const currentDate = dayjs().format("YYYY-MM-DD");
 
-    return errors;
+  const addNewCard = async (values) => {
+    const id = v4();
+    await setDoc(doc(db, "todos", id), values);
   };
 
   return (
@@ -35,12 +34,15 @@ export const ModalCreate = () => {
           </button>
           <h3 className="modal_header">Создать</h3>
           <Formik
-            initialValues={{
-              tags: [],
-            }}
-            validate={validate}
+            initialValues={{}}
             onSubmit={(values) => {
               values.id = v4();
+              values.deadline = Timestamp.fromDate(new Date(values.deadline));
+              values.dateCompletion = Timestamp.fromDate(
+                new Date("2040-01-01 00:00:00+03:00")
+              );
+
+              addNewCard(values);
               navigate("/Todo");
             }}>
             {(props) => (
@@ -53,12 +55,16 @@ export const ModalCreate = () => {
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                 />
-                {props.errors.description && (
-                  <div className="feedback">{props.errors.description}</div>
-                )}
-                {props.errors.name && (
-                  <div className="feedback">{props.errors.name}</div>
-                )}
+                <input
+                  className="input-date"
+                  type="date"
+                  name="deadline"
+                  onChange={props.handleChange}
+                  onBlur={props.handleBlur}
+                  min={currentDate}
+                  required
+                />
+
                 <Button value={"Сохранить"} />
               </Form>
             )}

@@ -10,7 +10,7 @@ export const Card = ({ card }) => {
   const deadline = dayjs(card.deadline.seconds * 1000);
   const currentDate = dayjs();
   const dateCompletion = dayjs(card.dateCompletion.seconds * 1000);
-  const defaultDate = dayjs("2040-01-01");
+  const defaultDate = dayjs("2040-01-01 00:00:00+03:00");
 
   const formatDate = (date) => date.format("DD/MM/YY");
 
