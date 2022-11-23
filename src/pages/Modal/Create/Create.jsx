@@ -17,8 +17,13 @@ export const ModalCreate = () => {
   const currentDate = dayjs().format("YYYY-MM-DD");
 
   const addNewCard = async (values) => {
-    const id = v4();
-    await setDoc(doc(db, "todos", id), values);
+    await setDoc(doc(db, "todos", values.id), {
+      id: values.id,
+      name: values.name,
+      description: values.description,
+      deadline: values.deadline,
+      dateCompletion: values.dateCompletion,
+    });
   };
 
   return (
@@ -55,16 +60,18 @@ export const ModalCreate = () => {
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                 />
-                <input
-                  className="input-date"
-                  type="date"
-                  name="deadline"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  min={currentDate}
-                  required
-                />
-
+                <label className="deadline">
+                  Дедлайн
+                  <input
+                    className="input-date"
+                    type="date"
+                    name="deadline"
+                    onChange={props.handleChange}
+                    onBlur={props.handleBlur}
+                    min={currentDate}
+                    required
+                  />
+                </label>
                 <Button value={"Сохранить"} />
               </Form>
             )}

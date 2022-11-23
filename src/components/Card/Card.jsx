@@ -35,7 +35,10 @@ export const Card = ({ card }) => {
           <div className="card-header">
             <p className="card-header_name">{card.name}</p>
             <div className="card-header__btns">
-              <NavLink to={`/Todo/edit/${card.id}`} id="2">
+              <NavLink
+                to={`/Todo/edit/${card.id}`}
+                state={{ card, flag }}
+                id="2">
                 <button className="card-btn">
                   <img src={pathEdit} alt="" />
                 </button>

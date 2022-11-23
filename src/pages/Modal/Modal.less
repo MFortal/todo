@@ -93,7 +93,6 @@
 }
 
 .input-date {
-  width: 220px;
   background-color: @color-background;
   padding: 15px;
   color: @color-commonFont;
@@ -102,8 +101,86 @@
   outline: none;
   border-radius: 5px;
 }
+
 ::-webkit-calendar-picker-indicator {
   padding: 5px;
   cursor: pointer;
   border-radius: 3px;
+}
+
+.toggle {
+  align-items: center;
+  border-radius: 100px;
+  display: flex;
+  font-weight: 700;
+  margin-bottom: 16px;
+
+  &:last-of-type {
+    margin: 0;
+  }
+}
+
+.toggle__input {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  &:not([disabled]):active + .toggle-track,
+  &:not([disabled]):focus + .toggle-track {
+    box-shadow: @color-yellow;
+  }
+}
+
+.toggle-track {
+  background: @color-background;
+  border: 2px solid @color-yellow-light;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  height: @track-height;
+  margin-right: 12px;
+  position: relative;
+  width: @track-width;
+}
+
+.toggle-indicator {
+  align-items: center;
+  background: @color-yellow-light;
+  opacity: 0.5;
+  border-radius: @toggle-indicator-size;
+  bottom: 2px;
+  display: flex;
+  height: @toggle-indicator-size;
+  justify-content: center;
+  left: 2px;
+  outline: solid 2px transparent;
+  position: absolute;
+  transition: 0.3s;
+  width: @toggle-indicator-size;
+}
+
+.toggle-text {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.toggle__input:checked + .toggle-track .toggle-indicator {
+  background: @color-yellow;
+  opacity: 1;
+  transform: translateX(@track-width - @track-height - 1);
+}
+
+.toggle__input:checked ~ .toggle-text {
+  font-weight: 700;
+}
+
+.deadline {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  gap: 15px;
 }
