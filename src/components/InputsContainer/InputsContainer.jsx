@@ -1,4 +1,4 @@
-export const Input = ({
+export const InputsContainer = ({
   nameInput,
   nameText,
   valueText,
@@ -8,7 +8,7 @@ export const Input = ({
   ...props
 }) => {
   return (
-    <div className="input-container">
+    <div className="inputs-container">
       <input
         placeholder={placeholderInput}
         type="text"
@@ -21,7 +21,7 @@ export const Input = ({
 
       <textarea
         placeholder={placeholderText}
-        className="input textarea"
+        className="textarea"
         type="text"
         name={nameText}
         value={valueText}
@@ -31,4 +31,4 @@ export const Input = ({
   );
 };
 
-export default Input;
+export default InputsContainer;

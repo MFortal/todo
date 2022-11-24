@@ -11,27 +11,25 @@
   justify-content: center;
 }
 
-.modal_content {
+.modal__content {
   background: @color-background;
   border-radius: 11px;
   padding: 50px 70px;
   position: relative;
 }
 
-.modal_contentDelete {
-  background: @color-background;
-  border-radius: 11px;
-  position: relative;
+.modal__content-delete {
+  padding: 0;
 }
 
-.modal_close {
+.modal__close {
   padding: 12px;
   position: absolute;
   right: 25px;
   top: 25px;
 }
 
-.modal_main {
+.modal__main {
   border: 1px solid @color-yellow;
   border-radius: 7px;
   padding: 14px;
@@ -43,7 +41,7 @@
   min-width: 620px;
 }
 
-.modal_header {
+.modal__header {
   font-family: "PoorStory-Regular", cursive;
   font-size: 1.4rem;
   line-height: 1.2;
@@ -51,14 +49,12 @@
   margin-bottom: 20px;
 }
 
-.modal_headerText {
+.modal__header-delete {
   font-size: 1rem;
-  line-height: 1.2;
   margin-bottom: 24px;
-  text-align: center;
 }
 
-.modal_btn {
+.modal__btn {
   font-size: 0.9rem;
   line-height: 1;
   color: @color-commonFont;
@@ -71,23 +67,23 @@
   border-radius: 4px;
 }
 
-.modal_buttons {
+.modal__buttons {
   display: flex;
   gap: 12px;
 }
 
-.modal_main_card-name {
+.modal__main_card-name {
   font-size: 1.125rem;
   line-height: 1;
   letter-spacing: 0.03em;
 }
 
-.modal_main_card-deadline {
+.modal__main_card-deadline {
   flex-basis: 100%;
   font-size: 0.8rem;
 }
 
-.modal_main-view {
+.modal__main-view {
   border: none;
   min-height: 170px;
 }
@@ -129,13 +125,13 @@
   white-space: nowrap;
   width: 1px;
 
-  &:not([disabled]):active + .toggle-track,
-  &:not([disabled]):focus + .toggle-track {
+  &:not([disabled]):active + .toggle__track,
+  &:not([disabled]):focus + .toggle__track {
     box-shadow: @color-yellow;
   }
 }
 
-.toggle-track {
+.toggle__track {
   background: @color-background;
   border: 2px solid @color-yellow-light;
   border-radius: 100px;
@@ -147,7 +143,7 @@
   width: @track-width;
 }
 
-.toggle-indicator {
+.toggle__track_indicator {
   align-items: center;
   background: @color-yellow-light;
   opacity: 0.5;
@@ -163,18 +159,18 @@
   width: @toggle-indicator-size;
 }
 
-.toggle-text {
+.toggle__text {
   font-size: 0.9rem;
   font-weight: 300;
 }
 
-.toggle__input:checked + .toggle-track .toggle-indicator {
+.toggle__input:checked + .toggle__track .toggle__track_indicator {
   background: @color-yellow;
   opacity: 1;
   transform: translateX(@track-width - @track-height - 1);
 }
 
-.toggle__input:checked ~ .toggle-text {
+.toggle__input:checked ~ .toggle__text {
   font-weight: 700;
 }
 

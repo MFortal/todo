@@ -1,21 +1,25 @@
 import { NavLink } from "react-router-dom";
-import dayjs from "dayjs";
-import { FLAG } from "../../js/common";
+
+import {
+  FLAG,
+  currentDate,
+  formatTStoDate,
+  getDefaultDate,
+  formatDate,
+} from "../../js/common";
 
 import pathEdit from "../../icons/edit.svg";
 import pathDelete from "../../icons/delete.svg";
 import pathClip from "../../icons/clip.svg";
 
 export const Card = ({ card }) => {
-  const deadline = dayjs(card.deadline.seconds * 1000);
-  const currentDate = dayjs();
-  const dateCompletion = dayjs(card.dateCompletion.seconds * 1000);
-  const defaultDate = dayjs("2040-01-01 00:00:00+03:00");
-
-  const formatDate = (date) => date.format("DD/MM/YY");
+  const deadline = formatTStoDate(card.deadline.seconds);
+  const dateCompletion = formatTStoDate(card.dateCompletion.seconds);
+  const defaultDate = getDefaultDate;
 
   let classContainerCard = "card-container ";
   let flag = FLAG.DEFAULT;
+
   // просрочена задача
   if (deadline.isBefore(currentDate) && dateCompletion.isSame(defaultDate)) {
     classContainerCard += "expired";
@@ -33,7 +37,7 @@ export const Card = ({ card }) => {
       <NavLink to={`/Todo/view/${card.id}`} state={{ card, flag }} id="1">
         <div className={classContainerCard}>
           <div className="card-header">
-            <p className="card-header_name">{card.name}</p>
+            <p className="card-header__name">{card.name}</p>
             <div className="card-header__btns">
               <NavLink
                 to={`/Todo/edit/${card.id}`}
