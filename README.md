@@ -2,10 +2,11 @@
 
 ## Стек
 
-React, Less
-База: Firebase
-Дополнительные библиотеки:
+- React
+- Less
+- Firebase
 
+### Дополнительные библиотеки:
 - dayjs
 - formik
 - react-router-dom
