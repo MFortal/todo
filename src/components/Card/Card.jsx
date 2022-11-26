@@ -58,9 +58,13 @@ export const Card = ({ card }) => {
             <p className="card-main__desc">
               {card.description?.length > 0 ? card.description : "Нет описания"}
             </p>
-            <div className="card-main__files">
+
+            <div
+              className={
+                card.files?.length > 0 ? "card-main__files" : "display_none"
+              }>
               <img src={pathClip} alt="" className="files__img" />
-              <span className="files__count">2</span>
+              <span className="files__count">{card.files?.length}</span>
             </div>
             <span className="card-main__deadline">
               Выполнить до {formatDate(deadline)}

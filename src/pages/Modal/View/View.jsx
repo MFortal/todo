@@ -1,10 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FLAG, formatTStoDate, formatDate } from "../../../js/common";
 
 import Button from "../../../components/Button/Button";
 import Modal from "../Modal";
 
 export const ModalView = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const card = location.state.card;
   const flag = location.state.flag;
@@ -31,8 +32,21 @@ export const ModalView = () => {
           Выполнить до {formatDate(deadline)}
         </span>
         <span className="modal__main_card-deadline">{statusCardText}</span>
+        <div className="modal__main_card-files">
+          {card.files?.map((file) => (
+            <a
+              className="card-files__url"
+              href={file.url}
+              download
+              key={file.url}
+              target="_blank"
+              rel="noopener noreferrer">
+              {file.name}
+            </a>
+          ))}
+        </div>
       </div>
-      <Button value={"Закрыть"} />
+      <Button value={"Закрыть"} onClick={() => navigate("/Todo")} />
     </>
   );
 
