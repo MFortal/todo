@@ -37,10 +37,14 @@ export const ModalEdit = () => {
     values.files = [];
 
     for (let i = 0; i < card.files?.length; i++) {
-      if (card.files[i].checked === true) values.files.push(card.files[i]);
-      delete values.files[i].checked;
+      if (card.files[i].checked === true) {
+        delete card.files[i].checked;
+        values.files.push(card.files[i]);
+      }
+
+      console.log(values.files[i]);
     }
-    console.log(values.files);
+
     for (let i = 0; i < newFiles?.length; i++) {
       values.files.push(newFiles[i]);
     }
