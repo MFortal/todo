@@ -12,7 +12,7 @@ export const ModalDelete = () => {
   };
 
   const children = (
-    <div className="modal__content modal__content-delete">
+    <div className="modal__content-delete">
       <h3 className="modal__header modal__header-delete">Удалить задачу?</h3>
       <div className="modal__buttons">
         <button
